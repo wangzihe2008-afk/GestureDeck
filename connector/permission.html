@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>GestureDeck · Camera access</title>
+    <link rel="stylesheet" href="permission.css" />
+  </head>
+  <body>
+    <main>
+      <img src="logo.svg" alt="" />
+      <div class="eyebrow">GESTUREDECK CONNECTOR</div>
+      <h1>Your camera. Your control.</h1>
+      <p>
+        The connector needs its own camera permission to recognize your poses while Canva or Google
+        Slides is in front. Processing happens on this computer. Video is not recorded or uploaded.
+      </p>
+      <button id="allow">Allow camera</button>
+      <div id="status" role="status">Click to open Chrome’s camera permission prompt.</div>
+      <video id="preview" autoplay muted playsinline hidden></video>
+      <p class="small">
+        After permission is granted, return to GestureDeck and click Start camera check. The toolbar
+        icon stops the camera. Alt + Shift + G pauses or resumes.
+      </p>
+      <button id="stop" class="secondary">Stop any active session</button>
+    </main>
+    <script type="module" src="permission.js"></script>
+  </body>
+</html>

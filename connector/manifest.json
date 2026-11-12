@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "GestureDeck Connector",
+  "version": "1.8.0",
+  "description": "Connect local GestureDeck body poses to a selected Canva or Google Slides presentation.",
+  "minimum_chrome_version": "116",
+  "permissions": ["storage", "offscreen", "scripting", "debugger"],
+  "host_permissions": [
+    "https://docs.google.com/presentation/*",
+    "https://www.canva.com/*",
+    "https://canva.com/*"
+  ],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "action": {
+    "default_title": "GestureDeck · click to stop camera and control",
+    "default_icon": { "128": "icon.png" }
+  },
+  "icons": { "128": "icon.png" },
+  "commands": {
+    "toggle-pause": {
+      "suggested_key": { "default": "Alt+Shift+G", "mac": "Alt+Shift+G" },
+      "description": "Pause or resume GestureDeck control"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://localhost/*", "http://127.0.0.1/*"],
+      "js": ["bridge.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://docs.google.com/presentation/*",
+        "https://www.canva.com/*",
+        "https://canva.com/*"
+      ],
+      "js": ["presentation.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  }
+}

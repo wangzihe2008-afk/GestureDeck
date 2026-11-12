@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>GestureDeck background camera check</title>
+    <style>
+      body {
+        max-width: 720px;
+        margin: 60px auto;
+        font: 17px system-ui;
+        color: #214b3f;
+        background: #f6f8ed;
+      }
+      button {
+        padding: 12px 20px;
+        font: inherit;
+      }
+      pre {
+        white-space: pre-wrap;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Native background frame check</h1>
+    <p>Uses generated frames and the real pose model. No camera or microphone access.</p>
+    <button id="start">Run 12-second check</button>
+    <pre id="result">Ready. Start the check, then switch to another tab.</pre>
+    <script type="module" src="./background-camera.ts"></script>
+  </body>
+</html>
